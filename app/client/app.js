@@ -8,6 +8,83 @@ global.startApp = function(container) {
 
   app.controller('diamondGame', function($scope, $http, $window) {
 
+
+
+    $scope.isVisited = "";
+
+    $scope.isBoxDiamond = function(event, index) {
+      // When no diamonds left showing the score to user;
+      if ($scope.diamonds.length == 0) {
+          $scope.userScore = document.getElementsByClassName("question").length;
+          $scope.isGameComplete = true;
+          return false;
+      }
+      $scope.isGameComplete = false;
+    // Game is on remove question mark
+      event.currentTarget.classList.remove("question");
+      // Found a diamond
+      if ($scope.diamonds.indexOf(index + 1) != -1) {
+            event.currentTarget.classList.add("diamond");
+            $scope.gameItemCollection[index] = 1;
+      if ($scope.isVisited) {
+            $scope.isVisited.classList.remove("arrow")
+            $scope.isVisited.classList.remove("left-arrow")
+      }
+      $scope.isVisited = null;
+      $scope.diamonds.splice($scope.diamonds.indexOf(index + 1), 1);
+
+    } else {
+      // Its not a diamond
+      $scope.range = findRange(index + 1);
+
+      if (!$scope.range.left) {
+          event.currentTarget.classList.add("arrow")
+          $scope.gameItemCollection[index] = 2;
+        if ($scope.isVisited) {
+          $scope.isVisited.classList.remove("arrow")
+          $scope.isVisited.classList.remove("left-arrow")
+      }
+
+      $scope.isVisited = event.currentTarget;
+      return;
+      }
+      else if (!$scope.range.right) {
+        event.currentTarget.classList.add("left-arrow");
+        $scope.gameItemCollection[index] = 2;
+
+        if ($scope.isVisited) {
+          $scope.isVisited.classList.remove("left-arrow")
+          $scope.isVisited.classList.remove("arrow")
+        }
+        $scope.isVisited = event.currentTarget;
+        return;
+    }
+
+    var min = Math.min((index + 1) - $scope.range.left, $scope.range.right - (index + 1));
+
+    if ((index + 1) - $scope.range.left == min) {
+          event.currentTarget.classList.add("left-arrow");
+          $scope.gameItemCollection[index] = 2;
+
+          if ($scope.isVisited) {
+            $scope.isVisited.classList.remove("left-arrow")
+            $scope.isVisited.classList.remove("arrow")
+          }
+          $scope.isVisited = event.currentTarget;
+          return "goLeft";
+    } else {
+          event.currentTarget.classList.add("arrow")
+          $scope.gameItemCollection[index] = 2;
+          if ($scope.isVisited) {
+            $scope.isVisited.classList.remove("arrow")
+            $scope.isVisited.classList.remove("left-arrow")
+          }
+          $scope.isVisited = event.currentTarget;
+          return "goRight";
+    }
+  }
+}
+
     function findRange(currentIndex) {
       var rightGreaterNumber;
       var leftSmallerNumber;
