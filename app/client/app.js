@@ -8,6 +8,15 @@ global.startApp = function(container) {
 
   app.controller('diamondGame', function($scope, $http, $window) {
 
+    /// Added event listner to be able to save state when user closes session or tab or quits game in the middle
+    $window.addEventListener("beforeunload", function(e) {
+        if ($scope.isGameComplete) {
+              localStorage.setItem("gameItemCollection", null);
+        } else {
+              localStorage.setItem("gameItemCollection", JSON.stringify($scope.gameItemCollection));
+              localStorage.setItem('diamonds', JSON.stringify($scope.diamonds));
+        }
+     });
 
 
     $scope.isVisited = "";
