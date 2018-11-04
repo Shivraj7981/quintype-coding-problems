@@ -22,12 +22,14 @@ global.startApp = function(container) {
     $scope.isVisited = "";
 
     $scope.isBoxDiamond = function(event, index) {
+
       // When no diamonds left showing the score to user;
-      if ($scope.diamonds.length == 0) {
-          $scope.userScore = document.getElementsByClassName("question").length;
-          $scope.isGameComplete = true;
-          return false;
-      }
+        if ($scope.diamonds.length == 0) return false;
+      // if ($scope.diamonds.length == 0) {
+      //     $scope.userScore = document.getElementsByClassName("question").length;
+      //     $scope.isGameComplete = true;
+      //     return false;
+      // }
       $scope.isGameComplete = false;
     // Game is on remove question mark
       event.currentTarget.classList.remove("question");
@@ -41,6 +43,14 @@ global.startApp = function(container) {
       }
       $scope.isVisited = null;
       $scope.diamonds.splice($scope.diamonds.indexOf(index + 1), 1);
+
+        // When no diamonds left showing the score to user;
+        if ($scope.diamonds.length == 0) {
+            $scope.userScore = document.getElementsByClassName("question").length;
+            $scope.isGameComplete = true;
+            alert("You score is " + $scope.userScore);
+            return false;
+        }
 
     } else {
       // Its not a diamond
