@@ -7,7 +7,7 @@
   <body>
       <div ng-app="GameApp" id="container" ng-controller="diamondGame">
           <h1> User Score is : {{userScore}}</h1>
-          <div ng-click="isBoxDiamond($event, $index)"  ng-class="{clearfloat: breakLine($index)}" ng-repeat="gameItemCollection in gameItemCollection track by $index" class="boxes question">
+          <div ng-click="isBoxDiamond($event, $index)"  ng-class="{clearfloat: breakLine($index), question: gameItemCollection==2 ? false: true, diamond: gameItemCollection==1? true:false}" ng-repeat="gameItemCollection in gameItemCollection track by $index" class="boxes">
             <span> {{$index + 1}}</span>
           </div>
       </div>
