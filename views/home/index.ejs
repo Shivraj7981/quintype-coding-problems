@@ -5,98 +5,12 @@
     <script type="text/javascript" src="/assets/app.js"></script>
   </head>
   <body>
-    <div id="container">
-      <div ng-app="GameApp" ng-controller="diamondGame">
-        {{name}}
+      <div ng-app="GameApp" id="container" ng-controller="diamondGame">
+          <h1> User Score is : {{userScore}}</h1>
+          <div ng-click="isBoxDiamond($event, $index)"  ng-class="{clearfloat: breakLine($index)}" ng-repeat="gameItemCollection in gameItemCollection track by $index" class="boxes question">
+            <span> {{$index + 1}}</span>
+          </div>
       </div>
-      <div>
-        <div class="messages"></div>
-        <table class="diamondsweeper-board">
-          <tbody>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell diamond"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell diamond"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell diamond"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell arrow"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell diamond"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-            </tr>
-            <tr>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell unknown"></div></td>
-              <td><div class="cell"></div></td>
-              <td><div class="cell"></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <script type="text/javascript">startApp(document.getElementById("container"));</script>
+    <script type="text/javascript">startApp();</script>
   </body>
 </html>
