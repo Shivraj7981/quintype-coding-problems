@@ -1,24 +1,38 @@
-table.diamondsweeper-board {
-  td {
-    padding: 0;
-    border: 1px solid black;
-  }
-}
-
-.cell {
-  height: 50px;
-  width: 50px;
-  background-size: 50px 50px;
-
-  &.diamond {
-    background-image: url(diamond.png);
+#container {
+  .boxes {
+    padding-top: 11%;
+    width: 11%;
+    float: left;
+    border: 0.5px solid ;
+    margin: 1px;
   }
 
-  &.arrow {
-    background-image: url(arrow.png);
+  span {
+    font-size: 18px;
   }
 
-  &.unknown {
-    background-image: url(question.png);
+  .question {
+    background-image: url("question.png");
+    background-size: cover;
   }
+
+  .diamond {
+    background-image: url("diamond.png");
+    background-size: cover;
+  }
+
+  .arrow {
+    background-image: url("arrow.png");
+    background-size: cover;
+  }
+
+  .left-arrow {
+    background-image: url("left-arrow.png");
+    background-size: cover;
+  }
+
+  .clearfloat {
+    clear: left;
+  }
+
 }
