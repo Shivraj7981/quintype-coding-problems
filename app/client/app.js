@@ -79,30 +79,22 @@ global.startApp = function(container) {
         return;
     }
 
-    var min = Math.min((index + 1) - $scope.range.left, $scope.range.right - (index + 1));
+      var min = Math.min((index + 1) - $scope.range.left, $scope.range.right - (index + 1));
 
-    if ((index + 1) - $scope.range.left == min) {
-          event.currentTarget.classList.add("left-arrow");
-          $scope.gameItemCollection[index] = 2;
-
-          if ($scope.isVisited) {
-            $scope.isVisited.classList.remove("left-arrow")
-            $scope.isVisited.classList.remove("arrow")
-          }
+        if ((index + 1) - $scope.range.left == min) {
+              event.currentTarget.classList.add("left-arrow");
+              $scope.gameItemCollection[index] = 2;
+        } else {
+              event.currentTarget.classList.add("arrow")
+              $scope.gameItemCollection[index] = 2;
+        }
+        if ($scope.isVisited) {
+          $scope.isVisited.classList.remove("arrow")
+          $scope.isVisited.classList.remove("left-arrow")
+        }
           $scope.isVisited = event.currentTarget;
-          return "goLeft";
-    } else {
-          event.currentTarget.classList.add("arrow")
-          $scope.gameItemCollection[index] = 2;
-          if ($scope.isVisited) {
-            $scope.isVisited.classList.remove("arrow")
-            $scope.isVisited.classList.remove("left-arrow")
-          }
-          $scope.isVisited = event.currentTarget;
-          return "goRight";
+       }
     }
-  }
-}
 
     function findRange(currentIndex) {
       var rightGreaterNumber;
