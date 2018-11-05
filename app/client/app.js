@@ -135,8 +135,9 @@ global.startApp = function(container) {
       var min = 1;
       var max = 64;
       while (count > 0) {
-        if (diamond.indexOf(parseInt(Math.random() * (+max - +min) + +min)) == -1) {
-            diamond.push(parseInt(Math.random() * (+max - +min) + +min));
+        var randomNumber = parseInt(Math.random() * (+max - +min) + +min);
+        if (diamond.indexOf(randomNumber) == -1) {
+            diamond.push(randomNumber);
             count--;
           }
       }
